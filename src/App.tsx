@@ -1,10 +1,14 @@
 import React from "react";
+import Home from "./pages/Home";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
-    <>
-      <h1 className="text-center">Hello</h1>
-    </>
+    <div className="font-mulish">
+      <BrowserRouter>
+        <Home />
+      </BrowserRouter>
+    </div>
   );
 }
 
