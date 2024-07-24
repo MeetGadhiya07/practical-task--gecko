@@ -2,11 +2,13 @@ import profile from "../../assets/Images/josh-man.png";
 import topQuote from "../../assets/Images/top-quote.svg";
 import downQuote from "../../assets/Images/down-quote.svg";
 
+import BlogSlider from "../blog-slider/blog-slider";
+
 const TestimonialsAndBlogs = () => {
     return (
         <section className="h-[1277px] ">
             <div className="container bg-[url('/src/assets/Images/testimonial.svg')] h-full">
-                <section className=" ">
+                <section className="testimonials-wrapper">
                     <h1 className="text-secondary text-[47px] leading-[58.99px] font-bold  mb-20  pt-[87.12px]">
                         Testimonials
                     </h1>
@@ -73,7 +75,18 @@ const TestimonialsAndBlogs = () => {
                         </div>
                     </div>
                 </section>
-            </div>
+                <section className="blogs-wrapper">
+                  <div className="container">
+                    <h1 className="text-secondary text-[47px] leading-[58.99px] font-bold  mb-20  pt-[87.12px]">
+                        Blogs
+                    </h1>
+
+                    <BlogSlider/>
+                    </div>
+                    </section>
+
+                            </div>
+
         </section>
     );
 };
