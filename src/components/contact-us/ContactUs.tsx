@@ -1,7 +1,9 @@
 import React from "react";
-import { Formik, Form } from "formik";
+import { Formik, Form, FormikHelpers } from "formik";
 import * as Yup from "yup";
 import CustomField from "../../utils/input";
+import { Toaster } from "../../utils/toaster";
+import { post } from "../../services/apiService";
 
 interface FormValues {
   name: string;
@@ -31,6 +33,33 @@ const initialValues: FormValues = {
 };
 
 const ContactUs = () => {
+  const handleSubmit = async (
+    values: FormValues,
+    { resetForm }: FormikHelpers<FormValues>
+  ) => {
+    const payload = {
+      fname: values.name,
+      lname: values.lastName,
+      email: values.mail,
+      phone: values.phone,
+      budget: values.budget,
+      description: values.description,
+    };
+
+    try {
+      const response = await post<typeof payload, any>(
+        "/contact/send",
+        payload
+      );
+      if (response.success) {
+        resetForm();
+        Toaster("success", response.data.message);
+      }
+    } catch (error) {
+      Toaster("error", "Failed to send message. Please try again.");
+    }
+  };
+
   return (
     <section className="container mt-10 mb-[122px]">
       <h1 className="text-secondary text-[47px] leading-[58.99px] font-bold mb-20">
@@ -40,10 +69,7 @@ const ContactUs = () => {
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={(values) => {
-          // Handle form submission
-          console.log(values);
-        }}
+        onSubmit={handleSubmit}
       >
         {() => (
           <Form>
@@ -67,6 +93,7 @@ const ContactUs = () => {
                 />
               </div>
             </div>
+
             <div className="flex justify-center">
               <button
                 type="submit"
