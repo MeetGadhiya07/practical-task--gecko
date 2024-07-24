@@ -6,13 +6,14 @@ import blogFirst from "../../assets/Images/blog-first.png";
 
 const BlogSlider = () => {
   const sliderSettings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
+    arrows:false
   };
 
   return (

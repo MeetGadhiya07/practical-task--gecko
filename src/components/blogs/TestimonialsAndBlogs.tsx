@@ -77,9 +77,15 @@ const TestimonialsAndBlogs = () => {
                 </section>
                 <section className="blogs-wrapper">
                   <div className="container">
+
+                    <div className="flex justify-between items-center">
                     <h1 className="text-secondary text-[47px] leading-[58.99px] font-bold  mb-20  pt-[87.12px]">
                         Blogs
                     </h1>
+
+                    <span>View More</span>
+
+                    </div>
 
                     <BlogSlider/>
                     </div>
